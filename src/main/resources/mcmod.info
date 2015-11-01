@@ -1,0 +1,16 @@
+[
+{
+  "modid": "saltyadditions",
+  "name": "SaltyAdditions",
+  "description": "This is an Addon Mod for Salty Mod, that adds Food of ActuallyAdditions.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["canitzp"],
+  "credits": "canitzp, Ellpeck, Liahim85",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["ActuallyAdditions", "SaltMod"]
+}
+]
