@@ -21,17 +21,17 @@ public class SaltyFood extends ItemFood{
         super(foods.healAmount + 2, foods.saturation + 2F, false);
         this.item = foods;
         setCreativeTab(SaltMod.LittleTab);
-        setUnlocalizedName(Strings.UNLOCALIZEDNAME + "salty" + foods.name);
+        setUnlocalizedName(SaltyAdditions.UNLOCALIZEDNAME + "salty" + foods.name);
         GameRegistry.registerItem(this, "salty" + foods.name);
         GameRegistry.addShapelessRecipe(new ItemStack(this), new ItemStack(SaltMod.saltPinch), new ItemStack(InitItems.itemFoods, 1, foods.ordinal()));
     }
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg) {
         textures = new IIcon[2];
-        textures[0] = reg.registerIcon(Strings.MODID + ":overlay1");
+        textures[0] = reg.registerIcon(SaltyAdditions.MODID + ":overlay1");
         textures[1] = reg.registerIcon("actuallyadditions:itemFood" + item.name);
-
     }
 
     @Override
@@ -55,7 +55,7 @@ public class SaltyFood extends ItemFood{
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return StatCollector.translateToLocal(Strings.MODID + ".salty.name") + " " + StatCollector.translateToLocal("item.actuallyadditions.itemFood" + item.name + ".name");
+        return StatCollector.translateToLocal(SaltyAdditions.MODID + ".salty.name") + " " + StatCollector.translateToLocal("item.actuallyadditions.itemFood" + item.name + ".name");
     }
 
 
