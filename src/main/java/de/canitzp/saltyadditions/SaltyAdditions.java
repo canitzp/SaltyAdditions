@@ -10,55 +10,48 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * @author canitzp
  * @version 15.50.1
  */
+@SuppressWarnings("unchecked")
 @Mod(modid = SaltyAdditions.MODID, name = SaltyAdditions.NAME, version = SaltyAdditions.VERSION, dependencies = "required-after:ActuallyAdditions;required-after:SaltMod")
 public class SaltyAdditions {
 
     public static final String MODID = "saltyadditions";
     public static final String NAME = "SaltyAdditions";
-    public static final String VERSION = "R-1.7.10-15.44.1";
+    public static final String VERSION = "R-1.7.10-15.50.1";
     public static final String UNLOCALIZEDNAME = MODID + ".";
 
-    public static BufferedReader bufferedReader;
+    public static ArrayList stringArray = new ArrayList();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        Thread thread = new Thread(){
-            @Override
-            public void run(){
-                try {
-                    SaltyAdditions.bufferedReader = new BufferedReader(new InputStreamReader(new URL("https://github.com/canitzp/SaltyAdditions/blob/master/Exclusion.txt").openStream()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        thread.setDaemon(true);
-        thread.setName(NAME + "Exclusion List Checker");
-        TheFoods[] allFoods = TheFoods.values();
-        for (TheFoods allFood : allFoods) {
-            if (!isExcluded(allFood.name))
-                new SaltyFood(allFood);
-        }
-        Logger logger = LogManager.getLogger(SaltyAdditions.NAME);
-        logger.info("Loaded all successfully!");
-    }
-
-    public boolean isExcluded(final String foodName) {
-        String line;
         try {
+            String line;
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/canitzp/SaltyAdditions/master/Exclusion.txt").openStream()));
             while ((line = bufferedReader.readLine()) != null) {
-                if (line.equals(foodName)) return true;
+                stringArray.add(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+
+        TheFoods[] allFoods = TheFoods.values();
+        for (TheFoods allFood : allFoods) {
+            if (!stringArray.contains(allFood.name))
+                new SaltyFood(allFood);
+            System.out.println(allFood.name);
+        }
+
+        System.out.println(stringArray.toString());
+
+        Logger logger = LogManager.getLogger(SaltyAdditions.NAME);
+        logger.info("Loaded all successfully!");
     }
+
 
 }
 

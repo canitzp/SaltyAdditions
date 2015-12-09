@@ -18,12 +18,12 @@ buildscript {
 apply plugin: 'forge'
 apply plugin: 'idea'
 
-version= "R-1.7.10-15.44.1"
+version= "R-1.7.10-15.50.1"
 group= "de.canitzp.saltyadditions"
 archivesBaseName = "saltyadditions"
 
 minecraft {
-    version = "1.7.10-10.13.4.1541-1.7.10"
+    version = "1.7.10-10.13.4.1558-1.7.10"
     runDir = "idea"
 }
 

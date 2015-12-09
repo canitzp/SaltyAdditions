@@ -1,1 +1,12 @@
 Cheese
+Spaghetti
+SubmarineSandwich
+Hamburger
+Pizza
+Doughnut
+CarrotJuice
+ChocolateCake
+Toast
+Baguette
+BigCookie
+ChocolateToast
