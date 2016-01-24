@@ -18,7 +18,7 @@ buildscript {
 apply plugin: 'forge'
 apply plugin: 'idea'
 
-version= "R-1.7.10-15.50.1"
+version= "R-1.7.10-16.02.1"
 group= "de.canitzp.saltyadditions"
 archivesBaseName = "saltyadditions"
 
@@ -50,5 +50,11 @@ processResources
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+    }
+}
+
+idea {
+    module {
+        inheritOutputDirs = true
     }
 }

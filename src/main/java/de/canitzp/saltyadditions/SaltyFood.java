@@ -3,14 +3,15 @@ package de.canitzp.saltyadditions;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ellpeck.actuallyadditions.items.InitItems;
-import ellpeck.actuallyadditions.items.metalists.TheFoods;
+import de.ellpeck.actuallyadditions.mod.items.InitItems;
+import de.ellpeck.actuallyadditions.mod.items.metalists.TheFoods;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
-import ru.liahim.saltmod.main.SaltMod;
+import ru.liahim.saltmod.common.CommonProxy;
+import ru.liahim.saltmod.common.ModItems;
 
 public class SaltyFood extends ItemFood{
 
@@ -20,10 +21,10 @@ public class SaltyFood extends ItemFood{
     public SaltyFood(TheFoods foods){
         super(foods.healAmount + 2, foods.saturation + 2F, false);
         this.item = foods;
-        setCreativeTab(SaltMod.LittleTab);
+        setCreativeTab(CommonProxy.saltTab);
         setUnlocalizedName(SaltyAdditions.UNLOCALIZEDNAME + "salty" + foods.name);
         GameRegistry.registerItem(this, "salty" + foods.name);
-        GameRegistry.addShapelessRecipe(new ItemStack(this), new ItemStack(SaltMod.saltPinch), new ItemStack(InitItems.itemFoods, 1, foods.ordinal()));
+        GameRegistry.addShapelessRecipe(new ItemStack(this), new ItemStack(ModItems.saltPinch), new ItemStack(InitItems.itemFoods, 1, foods.ordinal()));
     }
 
     @Override
